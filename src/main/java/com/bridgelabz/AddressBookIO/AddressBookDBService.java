@@ -104,9 +104,15 @@ public class AddressBookDBService {
 	}
 
 	// To get contacts created after a particular date
-	public List<Contact> getContactsByDate(LocalDate startDate, LocalDate endDate) throws DatabaseException {
+	public List<Contact> getContactsByDateDB(LocalDate startDate, LocalDate endDate) throws DatabaseException {
 		String sqlQuery = String.format("SELECT * FROM contact WHERE created_date BETWEEN '%s' AND '%s';",
 				Date.valueOf(startDate), Date.valueOf(endDate));
+		return executeSqlQuery(sqlQuery);
+	}
+
+	// To get contacts by given city or state
+	public List<Contact> getContactsByCityOrStateDB(String city, String state) throws DatabaseException {
+		String sqlQuery = String.format("SELECT * FROM contact WHERE city = '%s' OR state = '%s';", city, state);
 		return executeSqlQuery(sqlQuery);
 	}
 

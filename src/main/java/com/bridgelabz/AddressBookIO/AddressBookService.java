@@ -54,6 +54,10 @@ public class AddressBookService {
 	}
 
 	public List<Contact> getContactsByDate(LocalDate startDate, LocalDate endDate) throws DatabaseException {
-		return addressBookDBService.getContactsByDate(startDate, endDate);
-	}	
+		return addressBookDBService.getContactsByDateDB(startDate, endDate);
+	}
+
+	public List<Contact> getContactsByCityOrState(String city, String state) throws DatabaseException {
+		return addressBookDBService.getContactsByCityOrStateDB(city, state);
+	}
 }

@@ -40,15 +40,27 @@ public class AddressBookDBServiceTest {
 		}
 		assertTrue(result);
 	}
-	
+
 	// To test the retrieved entries for a given data range
 	@Test
-	public void gievnDateRangeWhenRetrievedSouldMatchContactsCount() {
+	public void givenDateRangeWhenRetrievedSouldMatchContactsCount() {
 		try {
 			contactList = addressBookService.getContactsByDate(LocalDate.of(2020, 05, 01), LocalDate.now());
-		}catch(DatabaseException e) {
+		} catch (DatabaseException e) {
 			e.printStackTrace();
 		}
 		assertEquals(3, contactList.size());
 	}
+
+	// To test the retrieved entries for a given city or state
+	@Test
+	public void givenCityStateWhenRetrievedShouldMatchContactsCount() {
+		try {
+			contactList = addressBookService.getContactsByCityOrState("Mumbai", "Maharashtra");
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		} 
+		assertEquals(2, contactList.size());
+	}
+
 }
