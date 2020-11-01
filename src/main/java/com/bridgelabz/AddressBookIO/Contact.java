@@ -3,6 +3,7 @@ package com.bridgelabz.AddressBookIO;
 
 public class Contact {
 	// Attributes
+	private int contactId;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -23,6 +24,12 @@ public class Contact {
 		this.zip = zip;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+	}
+	
+	public Contact(int contactId , String firstName, String lastName, String address, String city, String state, int zip,
+			long phoneNumber, String email) {
+		this(firstName,lastName,address,city,state,zip,phoneNumber,email);
+		this.contactId = contactId;
 	}
 
 	// Setters and Getters

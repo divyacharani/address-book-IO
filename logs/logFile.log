@@ -1,0 +1,5 @@
+Driver Loaded!!!
+Drivers List : 
+com.mysql.cj.jdbc.Driver
+Connecting to.....jdbc:mysql://localhost:3306/address_book_service
+Connection established successfully!!!
