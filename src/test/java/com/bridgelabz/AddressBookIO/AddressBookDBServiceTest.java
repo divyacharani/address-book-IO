@@ -16,6 +16,7 @@ public class AddressBookDBServiceTest {
 		addressBookService = new AddressBookService();
 	}
 
+	// To test retrieved entries from database
 	@Test
 	public void givenAddressBookDatabaseWhenRetrievedShouldContactsCount() {
 		try {
@@ -24,5 +25,18 @@ public class AddressBookDBServiceTest {
 			e.printStackTrace();
 		}
 		assertEquals(5, contactList.size());
+	}
+
+	// To test whether database is updated for a given entry or not
+	@Test
+	public void givenUpdatedPhoneNumberWhenUpdatedShouldSyncWithDatabase() {
+		boolean result = false;
+		try {
+			addressBookService.updateData("Rachel", "Green", 9875961560L);
+			result = addressBookService.checkContactsInsyncWithDatabase("Rachel", "Green");
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
+		assertTrue(result);
 	}
 }

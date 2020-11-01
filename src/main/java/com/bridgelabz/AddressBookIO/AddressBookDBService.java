@@ -1,6 +1,7 @@
 package com.bridgelabz.AddressBookIO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,6 +14,7 @@ public class AddressBookDBService {
 
 	private static AddressBookDBService addressBookDBService;
 	List<Contact> contactList = new ArrayList<Contact>();
+	PreparedStatement preparedStatementByName;
 
 	private AddressBookDBService() {
 
@@ -24,6 +26,7 @@ public class AddressBookDBService {
 		return addressBookDBService;
 	}
 
+	// To read data from database
 	public List<Contact> readDataDB() throws DatabaseException {
 		String sqlQuery = "SELECT * FROM contact;";
 		return exceutesqlQuery(sqlQuery);
@@ -54,6 +57,48 @@ public class AddressBookDBService {
 			throw new DatabaseException("Unable to execute query!!", exceptionType.EXECUTE_QUERY);
 		}
 		return contactList;
+	}
+
+	// To update contact in database
+	public int updateDataDB(String firstName, String lastName, long phoneNumber) throws DatabaseException {
+		String sqlQuery = String.format(
+				"UPDATE contact SET phone_number = %d WHERE first_name = '%s' AND last_name = '%s';", phoneNumber,
+				firstName, lastName);
+		try (Connection connection = DBConnection.getConnection()) {
+			Statement statement = connection.createStatement();
+			int rowAffected = statement.executeUpdate(sqlQuery);
+			return rowAffected;
+		} catch (SQLException e) {
+			throw new DatabaseException("Unable to execute query!!", exceptionType.EXECUTE_QUERY);
+		}
+	}
+
+	// To get contact data from database by name
+	public List<Contact> getContactByNameFromDB(String firstName, String lastName) throws DatabaseException {
+		List<Contact> contactListByName = null;
+		if (preparedStatementByName == null)
+			preparedStatemenToGetContactDataByName();
+		ResultSet result = null;
+		try {
+			preparedStatementByName.setString(1, firstName);
+			preparedStatementByName.setString(2, lastName);
+			result = preparedStatementByName.executeQuery();
+		} catch (SQLException e) {
+			throw new DatabaseException("Unable to execute query!!", exceptionType.EXECUTE_QUERY);
+		}
+		contactListByName = getResultSet(result);
+		return contactListByName;
+	}
+
+	// Prepared statement to get data by name
+	private void preparedStatemenToGetContactDataByName() throws DatabaseException {
+		String sql = "SELECT * FROM contact WHERE first_name = ? AND last_name = ?;";
+		try  {
+			Connection connection = DBConnection.getConnection();
+			preparedStatementByName = connection.prepareStatement(sql);
+		} catch (SQLException e) {
+			throw new DatabaseException("Unable to execute query!!", exceptionType.EXECUTE_QUERY);
+		}
 	}
 
 }
