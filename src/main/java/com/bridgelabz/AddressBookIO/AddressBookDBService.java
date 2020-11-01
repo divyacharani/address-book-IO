@@ -1,10 +1,12 @@
 package com.bridgelabz.AddressBookIO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +31,10 @@ public class AddressBookDBService {
 	// To read data from database
 	public List<Contact> readDataDB() throws DatabaseException {
 		String sqlQuery = "SELECT * FROM contact;";
-		return exceutesqlQuery(sqlQuery);
+		return executeSqlQuery(sqlQuery);
 	}
 
-	private List<Contact> exceutesqlQuery(String sqlQuery) throws DatabaseException {
+	private List<Contact> executeSqlQuery(String sqlQuery) throws DatabaseException {
 		List<Contact> contactList = new ArrayList<>();
 		try (Connection connection = DBConnection.getConnection()) {
 			Statement statement = connection.createStatement();
@@ -93,12 +95,19 @@ public class AddressBookDBService {
 	// Prepared statement to get data by name
 	private void preparedStatemenToGetContactDataByName() throws DatabaseException {
 		String sql = "SELECT * FROM contact WHERE first_name = ? AND last_name = ?;";
-		try  {
+		try {
 			Connection connection = DBConnection.getConnection();
 			preparedStatementByName = connection.prepareStatement(sql);
 		} catch (SQLException e) {
 			throw new DatabaseException("Unable to execute query!!", exceptionType.EXECUTE_QUERY);
 		}
+	}
+
+	// To get contacts created after a particular date
+	public List<Contact> getContactsByDate(LocalDate startDate, LocalDate endDate) throws DatabaseException {
+		String sqlQuery = String.format("SELECT * FROM contact WHERE created_date BETWEEN '%s' AND '%s';",
+				Date.valueOf(startDate), Date.valueOf(endDate));
+		return executeSqlQuery(sqlQuery);
 	}
 
 }

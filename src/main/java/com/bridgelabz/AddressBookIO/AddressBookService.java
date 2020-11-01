@@ -1,5 +1,7 @@
 package com.bridgelabz.AddressBookIO;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,4 +52,8 @@ public class AddressBookService {
 		result = getContactByName(contactList, firstName, lastName).equals(contactFromDb);
 		return result;
 	}
+
+	public List<Contact> getContactsByDate(LocalDate startDate, LocalDate endDate) throws DatabaseException {
+		return addressBookDBService.getContactsByDate(startDate, endDate);
+	}	
 }

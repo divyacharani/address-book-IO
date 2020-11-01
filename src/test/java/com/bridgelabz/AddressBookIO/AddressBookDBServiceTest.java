@@ -2,6 +2,7 @@ package com.bridgelabz.AddressBookIO;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.Before;
@@ -18,7 +19,7 @@ public class AddressBookDBServiceTest {
 
 	// To test retrieved entries from database
 	@Test
-	public void givenAddressBookDatabaseWhenRetrievedShouldContactsCount() {
+	public void givenAddressBookDatabaseWhenRetrievedShouldMatchContactsCount() {
 		try {
 			contactList = addressBookService.readData();
 		} catch (DatabaseException e) {
@@ -38,5 +39,16 @@ public class AddressBookDBServiceTest {
 			e.printStackTrace();
 		}
 		assertTrue(result);
+	}
+	
+	// To test the retrieved entries for a given data range
+	@Test
+	public void gievnDateRangeWhenRetrievedSouldMatchContactsCount() {
+		try {
+			contactList = addressBookService.getContactsByDate(LocalDate.of(2020, 05, 01), LocalDate.now());
+		}catch(DatabaseException e) {
+			e.printStackTrace();
+		}
+		assertEquals(3, contactList.size());
 	}
 }
