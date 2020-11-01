@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -57,7 +58,7 @@ public class AddressBookService {
 		return addressBookDBService.getContactsByDateDB(startDate, endDate);
 	}
 
-	public List<Contact> getContactsByCityOrState(String city, String state) throws DatabaseException {
-		return addressBookDBService.getContactsByCityOrStateDB(city, state);
+	public Map<String,Integer> getContactsCountByState() throws DatabaseException {
+		return addressBookDBService.getContactsCountByStateDB();
 	}
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -55,12 +56,14 @@ public class AddressBookDBServiceTest {
 	// To test the retrieved entries for a given city or state
 	@Test
 	public void givenCityStateWhenRetrievedShouldMatchContactsCount() {
+		Map<String,Integer> stateToCount = null;
 		try {
-			contactList = addressBookService.getContactsByCityOrState("Mumbai", "Maharashtra");
+			stateToCount= addressBookService.getContactsCountByState();
 		} catch (DatabaseException e) {
 			e.printStackTrace();
 		} 
-		assertEquals(2, contactList.size());
+		Integer count = 2;
+		assertEquals(count, stateToCount.get("Maharashtra"));
 	}
 
 }
