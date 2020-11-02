@@ -12,8 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
-
 import com.bridgelabz.AddressBookIO.DatabaseException.exceptionType;
 
 public class AddressBookDBService {
@@ -130,6 +128,72 @@ public class AddressBookDBService {
 			throw new DatabaseException("Unable to execute query!!", exceptionType.EXECUTE_QUERY);
 		}
 		return stateToCount;
+	}
+
+	// To add new contact to database
+	public Contact addNewContactDB(Contact contact) throws DatabaseException {
+
+		int contactId = -1;
+		Connection connection = null;
+		Contact contactData = null;
+		try {
+			connection = DBConnection.getConnection();
+			connection.setAutoCommit(false);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try (Statement statement = connection.createStatement()) {
+			String sql = String.format(
+					"INSERT INTO contact (first_name,last_name,address,city,state,zip,phone_number,email_id,created_date) VALUES ('%s','%s','%s','%s','%s',%s,%s,'%s','%s');",
+					contact.getFirstName(), contact.getLastName(), contact.getAddress(), contact.getCity(),
+					contact.getState(), contact.getZip(), contact.getPhoneNumber(), contact.getEmail(),
+					contact.getCreatedDate());
+			int rowAffected = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+			if (rowAffected == 1) {
+				ResultSet resultSet = statement.getGeneratedKeys();
+				if (resultSet.next())
+					contactId = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		try (Statement statement = connection.createStatement()) {
+			String sql = String.format("INSERT INTO dictionary(contact_id,book_id,type_id)VALUES (%s,%s,%s);",
+					contactId, contact.getAddressBookId(), contact.getAddressBookTypeId());
+			int rowAffected = statement.executeUpdate(sql);
+			if (rowAffected == 1) {
+				contactData = new Contact(contactId, contact.getFirstName(), contact.getLastName(),
+						contact.getAddress(), contact.getCity(), contact.getState(), contact.getZip(),
+						contact.getPhoneNumber(), contact.getEmail());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+		try {
+			connection.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return contactData;
 	}
 
 }

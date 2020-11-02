@@ -1,6 +1,5 @@
 package com.bridgelabz.AddressBookIO;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +45,7 @@ public class AddressBookService {
 
 	}
 
+	// To check the database after updating
 	public boolean checkContactsInsyncWithDatabase(String firstName, String lastName) throws DatabaseException {
 		boolean result = false;
 		contactList = addressBookDBService.readDataDB();
@@ -54,11 +54,20 @@ public class AddressBookService {
 		return result;
 	}
 
+	// To get contacts created after a particular date
 	public List<Contact> getContactsByDate(LocalDate startDate, LocalDate endDate) throws DatabaseException {
 		return addressBookDBService.getContactsByDateDB(startDate, endDate);
 	}
 
-	public Map<String,Integer> getContactsCountByState() throws DatabaseException {
+	// To get contacts by given city or state
+	public Map<String, Integer> getContactsCountByState() throws DatabaseException {
 		return addressBookDBService.getContactsCountByStateDB();
+	}
+
+	// To add new contact to database
+	public void addNewContact(Contact contact) throws DatabaseException {
+		Contact contactData = addressBookDBService.addNewContactDB(contact);
+		if (contactData.getContactId() != -1)
+			contactList.add(contactData);
 	}
 }

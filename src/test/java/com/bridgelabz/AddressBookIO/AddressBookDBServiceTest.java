@@ -53,7 +53,7 @@ public class AddressBookDBServiceTest {
 		assertEquals(3, contactList.size());
 	}
 
-	// To test the retrieved entries for a given city or state
+	// To test the retrieved entries count for a given city or state
 	@Test
 	public void givenCityStateWhenRetrievedShouldMatchContactsCount() {
 		Map<String,Integer> stateToCount = null;
@@ -65,5 +65,18 @@ public class AddressBookDBServiceTest {
 		Integer count = 2;
 		assertEquals(count, stateToCount.get("Maharashtra"));
 	}
-
+	
+	// To test whether a new record when added impacted all the tables or not
+	@Test
+	public void givenNewRecordWhenAddedShouldImpactAllTables() {
+		boolean result = false;
+		Contact contact = new Contact("Terisa", "Mark", "T.Nagar", "Hyderabad", "Telangana", 567945, 8905434567L,"terisa@gmail.com", LocalDate.now(), 102, 52);
+		try {
+			addressBookService.addNewContact(contact);
+			result = addressBookService.checkContactsInsyncWithDatabase("Terisa", "Mark");
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+		}
+		assertTrue(result);
+	}
 }

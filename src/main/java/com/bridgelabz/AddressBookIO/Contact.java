@@ -1,5 +1,6 @@
 package com.bridgelabz.AddressBookIO;
 
+import java.time.LocalDate;
 
 public class Contact {
 	// Attributes
@@ -7,11 +8,15 @@ public class Contact {
 	private String firstName;
 	private String lastName;
 	private String address;
-	private String city;
+	private String city; 
 	private String state;
 	private int zip;
 	private long phoneNumber;
 	private String email;
+	private int addressBookId;
+	private int addressBookTypeId;
+	private LocalDate createdDate;
+	
 
 	// Constructor
 	public Contact(String firstName, String lastName, String address, String city, String state, int zip,
@@ -30,6 +35,14 @@ public class Contact {
 			long phoneNumber, String email) {
 		this(firstName,lastName,address,city,state,zip,phoneNumber,email);
 		this.contactId = contactId;
+	}
+
+	public Contact(String firstName, String lastName, String address, String city, String state, int zip,
+			long phoneNumber, String email, LocalDate createdDate, int addressBookId, int addressBookTypeId) {
+		this(firstName, lastName,address,city, state,zip,phoneNumber,email);
+		this.createdDate = createdDate;
+		this.addressBookId = addressBookId;
+		this.addressBookTypeId = addressBookTypeId;
 	}
 
 	// Setters and Getters
@@ -103,6 +116,30 @@ public class Contact {
 
 	public void setContactId(int contactId) {
 		this.contactId = contactId;
+	}
+
+	public int getAddressBookId() {
+		return addressBookId;
+	}
+
+	public void setAddressBookId(int addressBookId) {
+		this.addressBookId = addressBookId;
+	}
+
+	public int getAddressBookTypeId() {
+		return addressBookTypeId;
+	}
+
+	public void setAddressBookTypeId(int addressBookTypeId) {
+		this.addressBookTypeId = addressBookTypeId;
+	}
+
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
 	}
 
 	@Override
