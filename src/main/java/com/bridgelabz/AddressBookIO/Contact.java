@@ -1,6 +1,7 @@
 package com.bridgelabz.AddressBookIO;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Contact {
 	// Attributes
@@ -196,5 +197,8 @@ public class Contact {
 		return true;
 	}
 	
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(contactId,firstName,lastName);
+	}
 }

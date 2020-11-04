@@ -2,6 +2,7 @@ package com.bridgelabz.AddressBookIO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -69,5 +70,38 @@ public class AddressBookService {
 		Contact contactData = addressBookDBService.addNewContactDB(contact);
 		if (contactData.getContactId() != -1)
 			contactList.add(contactData);
+	}
+
+	public void addEmployeeListToEmployeeAndPayrollTable(List<Contact> contactList) throws DatabaseException {
+		for(Contact contact : contactList)
+		addNewContact(contact);
+	}
+
+	public void addEmployeeListToEmployeeAndPayrollWithThreads(List<Contact> contactList) {
+		Map<Integer, Boolean> contactAditionStatus = new HashMap<>();
+		contactList.forEach(contact -> {
+			Runnable task = () -> {
+				contactAditionStatus.put(contact.hashCode(), false);
+				LOG.info("Contact being added : " + contact.getFirstName());
+				try {
+					addNewContact(contact);
+				} catch (DatabaseException e) {
+					e.printStackTrace();
+				}
+				contactAditionStatus.put(contact.hashCode(), true);
+				LOG.info("Contact added : " + contact.getFirstName());
+			};
+			Thread thread = new Thread(task, contact.getFirstName());
+			thread.start();
+		});
+
+		while (contactAditionStatus.containsValue(false)) {
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 }

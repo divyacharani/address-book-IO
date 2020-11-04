@@ -23,9 +23,6 @@ public class DBConnection {
 			throw new DatabaseException("Unable to load the driver!!", exceptionType.DRIVER_CONNECTION);
 		}
 
-		// Get list of drivers
-		listDrivers();
-
 		AddressBookService.LOG.info("Connecting to....." + dataBaseURL);
 
 		// Establish Connection

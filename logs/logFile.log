@@ -1,45 +1,45 @@
 Driver Loaded!!!
-Drivers List : 
-com.mysql.cj.jdbc.Driver
 Connecting to.....jdbc:mysql://localhost:3306/address_book_service
 Connection established successfully!!!
 Driver Loaded!!!
-Drivers List : 
-com.mysql.cj.jdbc.Driver
 Connecting to.....jdbc:mysql://localhost:3306/address_book_service
 Connection established successfully!!!
 Driver Loaded!!!
-Drivers List : 
-com.mysql.cj.jdbc.Driver
 Connecting to.....jdbc:mysql://localhost:3306/address_book_service
 Connection established successfully!!!
 Driver Loaded!!!
-Drivers List : 
-com.mysql.cj.jdbc.Driver
 Connecting to.....jdbc:mysql://localhost:3306/address_book_service
 Connection established successfully!!!
 Driver Loaded!!!
-Drivers List : 
-com.mysql.cj.jdbc.Driver
 Connecting to.....jdbc:mysql://localhost:3306/address_book_service
 Connection established successfully!!!
+Contact being added : Chandler
+Contact being added : Rachel
 Driver Loaded!!!
-Drivers List : 
-com.mysql.cj.jdbc.Driver
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
+Contact being added : Monica
 Driver Loaded!!!
-Drivers List : 
-com.mysql.cj.jdbc.Driver
 Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
+Connecting to.....jdbc:mysql://localhost:3306/address_book_service
 Driver Loaded!!!
-Drivers List : 
-com.mysql.cj.jdbc.Driver
 Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
+Contact being added : Joey
 Driver Loaded!!!
-Drivers List : 
-com.mysql.cj.jdbc.Driver
 Connecting to.....jdbc:mysql://localhost:3306/address_book_service
 Connection established successfully!!!
+Connection established successfully!!!
+Contact being added : Terisa
+Driver Loaded!!!
+Connecting to.....jdbc:mysql://localhost:3306/address_book_service
+Connection established successfully!!!
+Connection established successfully!!!
+Connection established successfully!!!
+Contact added : Chandler
+Contact added : Monica
+Contact added : Joey
+Contact added : Terisa
+Contact added : Rachel
+Driver Loaded!!!
+Connecting to.....jdbc:mysql://localhost:3306/address_book_service
+Connection established successfully!!!
+Duration without Threads : PT1.7044883S
+Duration with Threads : PT0.3068017S
