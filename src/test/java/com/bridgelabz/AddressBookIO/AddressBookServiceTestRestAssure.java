@@ -89,4 +89,20 @@ public class AddressBookServiceTestRestAssure {
 		assertEquals(200, statusCode);
 	}
 
+	@Test
+	public void UC4givenContactWhenDeletedShouldMatchResponseCode() {
+		AddressBookService addressBookService;
+		Contact[] arrayOfContacts = getContactList();
+		addressBookService = new AddressBookService(Arrays.asList(arrayOfContacts));
+		Contact contact = addressBookService.getContact("Monica", "Geller");
+		RequestSpecification request = RestAssured.given();
+		request.header("Content-Type", "application/json");
+		Response response = request.delete("/contacts/" + contact.getContactId());
+		int statusCode = response.getStatusCode();
+		assertEquals(200, statusCode);
+		addressBookService.removeContact("Monica", "Geller");
+		long entries = addressBookService.countEntries();
+		assertEquals(5, entries);
+	}
+
 }

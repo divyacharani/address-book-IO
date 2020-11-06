@@ -22,7 +22,7 @@ public class AddressBookService {
 	public AddressBookService(List<Contact> contactList) {
 		this.contactList = new ArrayList<>(contactList);
 	}
-	
+
 	public static void main(String[] args) {
 		// Welcome Message
 		LOG.info("Welcome to Address Book Program ");
@@ -76,8 +76,8 @@ public class AddressBookService {
 	}
 
 	public void addEmployeeListToEmployeeAndPayrollTable(List<Contact> contactList) throws DatabaseException {
-		for(Contact contact : contactList)
-		addNewContact(contact);
+		for (Contact contact : contactList)
+			addNewContact(contact);
 	}
 
 	public void addEmployeeListToEmployeeAndPayrollWithThreads(List<Contact> contactList) {
@@ -107,24 +107,30 @@ public class AddressBookService {
 		}
 
 	}
-	
+
 	public long countEntries() {
 		return contactList.size();
 	}
 
 	public void addContact(Contact contact) {
 		contactList.add(contact);
-		
+
 	}
 
 	public void updateContact(String firstName, String lastName, long phoneNumber) {
-		getContactByName(contactList, firstName, lastName).setPhoneNumber(phoneNumber);;
-		
+		getContactByName(contactList, firstName, lastName).setPhoneNumber(phoneNumber);
+
 	}
 
 	public Contact getContact(String firstName, String lastName) {
 		Contact contact = contactList.stream().filter(contactObj -> (((contactObj.getFirstName()).equals(firstName))
 				&& ((contactObj.getLastName()).equals(lastName)))).findAny().orElse(null);
 		return contact;
+	}
+
+	public void removeContact(String firstName, String lastName) {
+		Contact contact = getContactByName(contactList, firstName, lastName);
+		contactList.remove(contact);
+
 	}
 }

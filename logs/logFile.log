@@ -139,3 +139,72 @@ Contact entries in JSON Server :
     "email": "monica@gmail.com"
   }
 ]
+Contact entries in JSON Server :
+[
+  {
+    "contactId": 1,
+    "firstName": "Chandler",
+    "lastName": "Bing",
+    "address": "S.R.Nagar",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "zip": 567891,
+    "phoneNumber": 9876543210,
+    "email": "chandler@gmail.com"
+  },
+  {
+    "contactId": 2,
+    "firstName": "Rachel",
+    "lastName": "Green",
+    "address": "Begumpet",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "zip": 765432,
+    "phoneNumber": 7896541233,
+    "email": "rachel@gmail.com"
+  },
+  {
+    "contactId": 3,
+    "firstName": "Joey",
+    "lastName": "Tribbiyani",
+    "address": "M.G.Road",
+    "city": "Chennai",
+    "state": "TamilNadu",
+    "zip": 345678,
+    "phoneNumber": 8976453277,
+    "email": "joey@gmail.com"
+  },
+  {
+    "contactId": 4,
+    "firstName": "Terisa",
+    "lastName": "Mark",
+    "address": "Kukatpally",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "zip": 567894,
+    "phoneNumber": 8976111277,
+    "email": "joey@gmail.com"
+  },
+  {
+    "contactId": 5,
+    "firstName": "Phoebe",
+    "lastName": "Buffay",
+    "address": "K.T.Colony",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "zip": 897654,
+    "phoneNumber": 9966663277,
+    "email": "phoebe@gmail.com"
+  },
+  {
+    "contactId": 6,
+    "firstName": "Monica",
+    "lastName": "Geller",
+    "address": "Thane",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "zip": 345123,
+    "phoneNumber": 8985312356,
+    "email": "monica@gmail.com"
+  }
+]

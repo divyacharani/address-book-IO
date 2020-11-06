@@ -54,17 +54,6 @@
       "zip": 897654,
       "phoneNumber": 9966663277,
       "email": "phoebe@gmail.com"
-    },
-    {
-      "contactId": 6,
-      "firstName": "Monica",
-      "lastName": "Geller",
-      "address": "Thane",
-      "city": "Mumbai",
-      "state": "Maharashtra",
-      "zip": 345123,
-      "phoneNumber": 8985312356,
-      "email": "monica@gmail.com"
     }
   ]
 }
