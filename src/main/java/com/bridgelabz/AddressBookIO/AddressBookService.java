@@ -112,4 +112,9 @@ public class AddressBookService {
 	public long countEntries() {
 		return contactList.size();
 	}
+
+	public void addContact(Contact contact) {
+		contactList.add(contact);
+		
+	}
 }

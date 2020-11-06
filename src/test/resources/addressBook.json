@@ -32,6 +32,39 @@
       "zip": 345678,
       "phoneNumber": 8976453277,
       "email": "joey@gmail.com"
+    },
+    {
+      "contactId": 4,
+      "firstName": "Terisa",
+      "lastName": "Mark",
+      "address": "Kukatpally",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "zip": 567894,
+      "phoneNumber": 8976111277,
+      "email": "joey@gmail.com"
+    },
+    {
+      "contactId": 5,
+      "firstName": "Phoebe",
+      "lastName": "Buffay",
+      "address": "K.T.Colony",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "zip": 897654,
+      "phoneNumber": 9955553277,
+      "email": "phoebe@gmail.com"
+    },
+    {
+      "contactId": 6,
+      "firstName": "Monica",
+      "lastName": "Geller",
+      "address": "Thane",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "zip": 345123,
+      "phoneNumber": 8985312356,
+      "email": "monica@gmail.com"
     }
   ]
 }
