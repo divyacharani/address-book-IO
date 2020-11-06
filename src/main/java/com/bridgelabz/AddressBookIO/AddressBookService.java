@@ -42,8 +42,7 @@ public class AddressBookService {
 			(getContactByName(contactList, firstName, lastName)).setPhoneNumber(phoneNumber);
 	}
 
-	private Contact getContactByName(List<Contact> contactList, String firstName, String lastName)
-			throws DatabaseException {
+	private Contact getContactByName(List<Contact> contactList, String firstName, String lastName) {
 		Contact contact = contactList.stream().filter(contactObj -> (((contactObj.getFirstName()).equals(firstName))
 				&& ((contactObj.getLastName()).equals(lastName)))).findAny().orElse(null);
 		return contact;
@@ -116,5 +115,16 @@ public class AddressBookService {
 	public void addContact(Contact contact) {
 		contactList.add(contact);
 		
+	}
+
+	public void updateContact(String firstName, String lastName, long phoneNumber) {
+		getContactByName(contactList, firstName, lastName).setPhoneNumber(phoneNumber);;
+		
+	}
+
+	public Contact getContact(String firstName, String lastName) {
+		Contact contact = contactList.stream().filter(contactObj -> (((contactObj.getFirstName()).equals(firstName))
+				&& ((contactObj.getLastName()).equals(lastName)))).findAny().orElse(null);
+		return contact;
 	}
 }

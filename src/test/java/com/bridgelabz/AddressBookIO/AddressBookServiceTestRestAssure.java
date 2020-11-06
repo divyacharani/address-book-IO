@@ -73,4 +73,20 @@ public class AddressBookServiceTestRestAssure {
 		assertEquals(6, entries);
 	}
 
+	@Test
+	public void UC3givenUpdatedPhoneNumberWhenUpdatedShouldMatchResponseCode() {
+		AddressBookService addressBookService;
+		Contact[] arrayOfContacts = getContactList();
+		addressBookService = new AddressBookService(Arrays.asList(arrayOfContacts));
+		addressBookService.updateContact("Phoebe", "Buffay", 9966663277L);
+		Contact contact = addressBookService.getContact("Phoebe", "Buffay");
+		String contactJson = new Gson().toJson(contact);
+		RequestSpecification request = RestAssured.given();
+		request.header("Content-Type", "application/json");
+		request.body(contactJson);
+		Response response = request.put("/contacts/" + contact.getContactId());
+		int statusCode = response.getStatusCode();
+		assertEquals(200, statusCode);
+	}
+
 }
