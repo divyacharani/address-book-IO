@@ -1,0 +1,37 @@
+{
+  "contacts": [
+    {
+      "contactId": 1,
+      "firstName": "Chandler",
+      "lastName": "Bing",
+      "address": "S.R.Nagar",
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "zip": 567891,
+      "phoneNumber": 9876543210,
+      "email": "chandler@gmail.com"
+    },
+    {
+      "contactId": 2,
+      "firstName": "Rachel",
+      "lastName": "Green",
+      "address": "Begumpet",
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "zip": 765432,
+      "phoneNumber": 7896541233,
+      "email": "rachel@gmail.com"
+    },
+    {
+      "contactId": 3,
+      "firstName": "Joey",
+      "lastName": "Tribbiyani",
+      "address": "M.G.Road",
+      "city": "Chennai",
+      "state": "TamilNadu",
+      "zip": 345678,
+      "phoneNumber": 8976453277,
+      "email": "joey@gmail.com"
+    }
+  ]
+}

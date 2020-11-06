@@ -1,45 +1,36 @@
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
-Contact being added : Chandler
-Contact being added : Rachel
-Driver Loaded!!!
-Contact being added : Monica
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Contact being added : Joey
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
-Connection established successfully!!!
-Contact being added : Terisa
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
-Connection established successfully!!!
-Connection established successfully!!!
-Contact added : Chandler
-Contact added : Monica
-Contact added : Joey
-Contact added : Terisa
-Contact added : Rachel
-Driver Loaded!!!
-Connecting to.....jdbc:mysql://localhost:3306/address_book_service
-Connection established successfully!!!
-Duration without Threads : PT1.7044883S
-Duration with Threads : PT0.3068017S
+Contact entries in JSON Server :
+[
+  {
+    "contactId": 1,
+    "firstName": "Chandler",
+    "lastName": "Bing",
+    "address": "S.R.Nagar",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "zip": 567891,
+    "phoneNumber": 9876543210,
+    "email": "chandler@gmail.com"
+  },
+  {
+    "contactId": 2,
+    "firstName": "Rachel",
+    "lastName": "Green",
+    "address": "Begumpet",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "zip": 765432,
+    "phoneNumber": 7896541233,
+    "email": "rachel@gmail.com"
+  },
+  {
+    "contactId": 3,
+    "firstName": "Joey",
+    "lastName": "Tribbiyani",
+    "address": "M.G.Road",
+    "city": "Chennai",
+    "state": "TamilNadu",
+    "zip": 345678,
+    "phoneNumber": 8976453277,
+    "email": "joey@gmail.com"
+  }
+]

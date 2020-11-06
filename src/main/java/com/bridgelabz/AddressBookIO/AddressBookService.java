@@ -13,12 +13,16 @@ public class AddressBookService {
 
 	public static final Logger LOG = LogManager.getLogger(AddressBookService.class);
 	private AddressBookDBService addressBookDBService;
-	private List<Contact> contactList = new ArrayList<Contact>();
+	private List<Contact> contactList;
 
 	public AddressBookService() {
 		addressBookDBService = AddressBookDBService.getInstance();
 	}
 
+	public AddressBookService(List<Contact> contactList) {
+		this.contactList = new ArrayList<>(contactList);
+	}
+	
 	public static void main(String[] args) {
 		// Welcome Message
 		LOG.info("Welcome to Address Book Program ");
@@ -103,5 +107,9 @@ public class AddressBookService {
 			}
 		}
 
+	}
+	
+	public long countEntries() {
+		return contactList.size();
 	}
 }
